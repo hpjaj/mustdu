@@ -1,5 +1,7 @@
 == README
 
+## MUSTDU: An application that allows users to create their own self-destructing must-do lists.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

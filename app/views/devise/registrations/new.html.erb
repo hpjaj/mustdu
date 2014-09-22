@@ -4,16 +4,16 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: true, placeholder: "Enter Name" %></div>
+  <%= f.text_field :name, autofocus: true, placeholder: "Enter name" %></div>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= f.email_field :email, placeholder: "Enter email" %></div>
 
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Enter password" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Enter password confirmation" %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

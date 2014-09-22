@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Once user has an account' do
-  it 'user signs in' do
+  it 'user signs in and out' do
     user = create(:user)
     mustdo = create(:mustdo)
     visit '/'
@@ -11,5 +11,10 @@ describe 'Once user has an account' do
     fill_in 'Enter password', with: user.password
     click_button 'Sign in'
     expect(current_path).to eq mustdos_path(user)
+    expect( page ).to have_content(user.name)
+    click_link 'Sign out'
+    visit '/'
+    expect( page ).to_not have_content(user.name)
   end
+
 end

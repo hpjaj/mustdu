@@ -1,5 +1,11 @@
 == README
 
+
+
+Setup
+- Have a cong/application.example.yml file to illustrate the storing of ENV variables
+- config/application.yml stores variables and is in .gitignoref
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -10,6 +16,7 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+
 
 * Database creation
 

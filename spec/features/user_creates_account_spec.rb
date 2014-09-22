@@ -11,4 +11,8 @@ describe 'Registering' do
     fill_in 'Enter password confirmation', with: 'password'
     click_button 'Sign up'
   end
+
+  it 'creates their Mustdu list' do
+    visit new_mustdo_path
+  end
 end

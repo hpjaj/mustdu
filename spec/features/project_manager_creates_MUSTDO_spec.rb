@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Project manager creates MUSTDO' do
+describe 'Project manager creates Mustdu' do
   it 'Successfully' do
     visit new_mustdo_path
     fill_in 'Description', with: 'Meet up with the team'

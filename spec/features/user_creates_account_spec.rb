@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Registering' do
   it 'creates a new user account' do
     visit '/'
-    click_link 'Sign Up'
+    click_link 'Sign up'
     visit new_user_registration_path
     fill_in 'Enter name', with: 'John Smith'
     fill_in 'Enter email', with: 'John@example.com'

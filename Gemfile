@@ -38,3 +38,4 @@ group :development, :test do
   gem 'capybara', '~> 2.3.0'
 end 
 
+gem 'devise'

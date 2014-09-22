@@ -12,7 +12,4 @@ describe 'Registering' do
     click_button 'Sign up'
   end
 
-  it 'creates their Mustdu list' do
-    visit new_mustdo_path
-  end
 end

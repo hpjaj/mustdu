@@ -11,7 +11,12 @@ class MustdosController < ApplicationController
     @mustdo = Mustdo.new(mustdo_params)
     @mustdo.user = current_user
     @mustdo.save
-    redirect_to @mustdo, notice: 'Your new Mustdu item was saved'    
+    if @mustdo.save
+      redirect_to mustdos_path, notice: 'Your new Mustdu item was saved'
+    else
+      flash[:error] = "There was a problem saving your Mustdu.  Please try again."
+      render mustdos_path
+    end
   end
 
   def show

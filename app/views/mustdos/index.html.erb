@@ -1,6 +1,9 @@
+<h1>That Which <%= current_user.name %> MustDU</h1>
+
+<%= render partial: 'form' %>
+
 <% @mustdos.each do |mustdo| %>
   <ul>
     <li><%= mustdo.description %></li>
   </ul>
 <% end %>
-<p><%= @mustdos.count %></p>

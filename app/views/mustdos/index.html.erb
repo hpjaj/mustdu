@@ -5,5 +5,10 @@
 <% @mustdos.each do |mustdo| %>
   <ul>
     <li><%= mustdo.description %></li>
+    <li>
+      <%= form_for mustdo do |f| %>
+        <%= f.check_box :complete %>
+      <% end %>
+    </li>
   </ul>
 <% end %>

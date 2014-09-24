@@ -26,7 +26,7 @@ class MustdosController < ApplicationController
   private
 
   def mustdo_params
-    params.require(:mustdo).permit(:description)
+    params.require(:mustdo).permit(:description, :complete)
   end
 
 end

@@ -26,6 +26,6 @@ describe 'User marks items completeled' do
     end
 
     it 'Successfully' do
- 
+      expect( page ).to have_content('Complete')
     end
 end

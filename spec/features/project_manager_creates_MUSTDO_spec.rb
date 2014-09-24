@@ -2,16 +2,12 @@ require 'rails_helper'
 
 describe 'Project manager creates Mustdu' do
 
+  include Warden::Test::Helpers
+  Warden.test_mode!
+  
   before do
     user = create(:user)
-    visit '/'
-    click_link 'Sign in'
-    visit new_user_session_path
-    fill_in 'Enter email', with: user.email
-    fill_in 'Enter password', with: user.password
-    click_button 'Sign in'
-    expect(current_path).to eq mustdos_path(user)
-    expect( page ).to have_content(user.name)
+    login_as(user, :scope => :user)
   end
   
   it 'Successfully' do

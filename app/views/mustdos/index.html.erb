@@ -1,14 +1,23 @@
 <h1>That Which <%= current_user.name %> MustDU</h1>
 
 <%= render partial: 'form' %>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Created At</th>
+    <th>Complete</th>
+    <th><%= button_to "Clear Completed", mustdos_path, :method => "get", class: 'btn btn-success' %></th>
 
-<% @mustdos.each do |mustdo| %>
-  <ul>
-    <li><%= mustdo.description %></li>
-    <li>
-      <%= form_for mustdo do |f| %>
-        <%= f.check_box :complete %>
-      <% end %>
-    </li>
-  </ul>
-<% end %>
+  </tr>
+  <% @mustdos.each do |mustdo| %>
+    <tr class='js-mustdos'>
+      <td><%= mustdo.description %></td>
+      <td><%= (mustdo.created_at + 7.days - Time.now).day %></td>
+      <td>
+        <%= form_for mustdo, :remote => true, :method => 'delete' do |f| %>
+          <%= f.check_box :complete, :class => 'submittable' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,5 +1,7 @@
 class MustdosController < ApplicationController
 
+  respond_to :html, :js
+
   def index
     @mustdos = current_user.mustdos
   end
@@ -21,6 +23,22 @@ class MustdosController < ApplicationController
 
   def show
     @mustdo = Mustdo.find params[:id]
+  end
+
+  def update
+    @mustdo = Mustdo.find(params[:id])
+    @mustdo.update_attributes(params[:mustdo])
+  end
+
+  def destroy
+    @mustdo = Mustdo.find(params[:id])
+    if @mustdo.destroy
+      flash[:notice] = "Destroyed"
+      redirect_to to mustdos_path
+    else
+      flash[:error] = "Did not work."
+      redirect_to mustdos_path
+    end
   end
 
   private

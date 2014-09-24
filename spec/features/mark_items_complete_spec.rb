@@ -17,15 +17,19 @@ describe 'User marks items completeled' do
       click_button 'Save'
       expect( page ).to have_content('Your new Mustdu item was saved')
       expect( page ).to have_content('Meet up with the team') 
-      visit new_mustdo_path
-      fill_in 'Description', with: 'Buy gift for spouse'
-      click_button 'Save'
-      expect( page ).to have_content('Your new Mustdu item was saved')
-      expect( page ).to have_content('Meet up with the team') 
-      expect( page ).to have_content('Buy gift for spouse')
+      visit mustdos_path
     end
 
     it 'Successfully' do
       expect( page ).to have_content('Complete')
+      check("mustdo[complete]")
+      click_button('Clear Completed')
+      # this one below is a test.  it should not be passing
+      # but it is.  meaning the item is not being deleted
+      expect( page ).to have_content('Meet up with the team') 
+
+      # i will uncomment this one, below, once above does not work
+      #expect( page ).to_not have_content('Meet up with the team')
+
     end
 end

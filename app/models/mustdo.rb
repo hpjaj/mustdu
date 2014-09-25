@@ -4,8 +4,8 @@ class Mustdo < ActiveRecord::Base
   
   default_scope { order('created_at ASC') }
 
-  def calculates_mustdos_days_left
-    mustdo.created_at + 7.days - Time.now
+  def days_left
+    ((self.created_at + 7.days - Time.now) / ( 60 * 60 * 24)).round
   end
-
+  
 end

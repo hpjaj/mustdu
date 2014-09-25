@@ -48,3 +48,4 @@ gem 'devise'
 gem 'figaro'
 gem 'faker'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'whenever', :require => false

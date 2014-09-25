@@ -32,6 +32,7 @@ class MustdosController < ApplicationController
 
   def destroy
     @mustdo = Mustdo.find(params[:id])
+=begin
     if @mustdo.destroy
       flash[:notice] = "Destroyed"
       redirect_to to mustdos_path
@@ -39,6 +40,7 @@ class MustdosController < ApplicationController
       flash[:error] = "Did not work."
       redirect_to mustdos_path
     end
+=end
   end
 
   private

@@ -1,6 +1,7 @@
 <h1>That Which <%= current_user.name %> MustDU</h1>
 
-<%= render partial: 'form' %>
+<%= render partial: 'form', locals: { mustdo: @mustdo } %>
+
 <table>
   <tr>
     <th>Description</th>
@@ -9,7 +10,7 @@
     <th><%= button_to "Clear Completed", mustdos_path, :method => "get", class: 'btn btn-success' %></th>
 
   </tr>
-  <% @mustdos.each do |mustdo| %>
+  <% @mustdos.each do |mustdo|  %>
     <tr id="todo-<%= "#{mustdo.id}" %>">
       <td><%= mustdo.description %></td>
       <td><%= mustdo.days_left %></td>

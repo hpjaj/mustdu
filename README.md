@@ -1,5 +1,3 @@
-== README
-
 ## MUSTDU: An application that allows users to create their own self-destructing must-do lists.
 
 Setup

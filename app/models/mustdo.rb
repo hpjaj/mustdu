@@ -2,6 +2,8 @@ class Mustdo < ActiveRecord::Base
 
   belongs_to :user
   
+  validates :description, length: { minimum: 5 }
+
   default_scope { order('created_at ASC') }
 
   def days_left

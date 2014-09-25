@@ -1,5 +1,24 @@
-<h1>Welcome#index</h1>
+<br/>
+<div class="jumbotron">
+  <h1>MustDU</h1>
+  <p>MustDU is an application that allows users to create their own self-destructing must-do lists!</p>
+  <p>
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or 
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>
 
-<%= link_to "Sign up", new_user_registration_path %>
-
-<%= link_to "Sign in", new_user_session_path %>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Solves world hunger</h2>
+    <p>MustDU will deliver food and water to those in need, all over the world.</p>
+  </div>
+  <div class="col-md-4">
+    <h2>Eliminates poverty</h2>
+    <p>MustDU will deliver money and education to those in need, all over the world.</p>
+  </div>
+  <div class="col-md-4">
+    <h2>Makes you better looking</h2>
+    <p>MustDU will make you better looking: it's scientifically proven to make men look like Ryan Gosling and women look like Shakira.</p>
+  </div>
+</div>

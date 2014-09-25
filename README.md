@@ -1,10 +1,11 @@
 == README
 
-
+## MUSTDU: An application that allows users to create their own self-destructing must-do lists.
 
 Setup
-- Have a cong/application.example.yml file to illustrate the storing of ENV variables
+- Have a config/application.example.yml file to illustrate the storing of ENV variables
 - config/application.yml stores variables and is in .gitignoref
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

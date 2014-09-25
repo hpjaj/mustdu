@@ -1,1 +1,3 @@
-$('#js-mustdos-' +<%= @mustdo.id %>).hide();
+var mustdoRowLocator = '#todo-<%= "#{mustdo.id}" %>'
+var mustdoRowElement = $(mustdoRowLocator);
+mustdoRowElement.addClass('deleted');

@@ -10,9 +10,9 @@
 
   </tr>
   <% @mustdos.each do |mustdo| %>
-    <tr class='js-mustdos'>
+    <tr id="todo-<%= "#{mustdo.id}" %>">
       <td><%= mustdo.description %></td>
-      <td><%= (mustdo.created_at + 7.days - Time.now).day %></td>
+      <td><%= "#{((mustdo.created_at + 7.days - Time.now) / ( 60 * 60 * 24)).round} "%></td>
       <td>
         <%= form_for mustdo, :remote => true, :method => 'delete' do |f| %>
           <%= f.check_box :complete, :class => 'submittable' %>

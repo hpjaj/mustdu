@@ -11,19 +11,22 @@
     
 
   </tr>
-  <% color_change_percent = ( 100 / @mustdos.length ) / 100.000 %>
-  <% color = 1 + color_change_percent %>
-  <% @mustdos.each do |mustdo|  %>
-    <% color = color -= color_change_percent %>
-    <tr style="background-color: rgba(231,16,30,<%= "#{color}" %>)" class="colored-rows" id="todo-<%= "#{mustdo.id}" %>">
-      <td><%= mustdo.description %></td>
-      <td class="column-center-align" ><%= mustdo.days_left %></td>
-      <td class="column-center-align" >
-        <%= form_for mustdo, :remote => true, :method => 'delete' do |f| %>
-          <%= f.check_box :complete, :class => 'submittable' %>
-        <% end %>
-      </td>
-    </tr>
+  <% if @mustdos.length > 0 %>
+    <% color_change_percent = ( 100 / @mustdos.length ) / 100.000 %>
+    <% color = 1 + color_change_percent %>
+    <% @mustdos.each do |mustdo|  %>
+      <% color = color -= color_change_percent %>
+      <tr style="background-color: rgba(231,16,30,<%= "#{color}" %>)" class="colored-rows" id="todo-<%= "#{mustdo.id}" %>">
+        <td><%= mustdo.description %></td>
+        <td class="column-center-align" ><%= mustdo.days_left %></td>
+        <td class="column-center-align" >
+          <%= form_for mustdo, :remote => true, :method => 'delete' do |f| %>
+            <%= f.check_box :complete, :class => 'submittable' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
+    
 
 </table>

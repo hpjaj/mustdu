@@ -1,24 +1,29 @@
-<h1>That Which <%= current_user.name %> MustDU</h1>
+<h1 id="your-mustdo-title">That which <%= current_user.name %> MustDU</h1>
 
 <%= render partial: 'form', locals: { mustdo: @mustdo } %>
 
-<table>
-  <tr>
-    <th>Description</th>
-    <th>Created At</th>
-    <th>Complete</th>
-    <th><%= button_to "Clear Completed", mustdos_path, :method => "get", class: 'btn btn-success' %></th>
+<table class="table">
+
+  <tr class="colored-header">
+    <th id="description-column-width" >Description</th>
+    <th class="column-center-align" >Days Left</th>
+    <th class="column-center-align" >Complete</th>
+    
 
   </tr>
+  <% color_change_percent = ( 100 / @mustdos.length ) / 100.000 %>
+  <% color = 1 %>
   <% @mustdos.each do |mustdo|  %>
-    <tr id="todo-<%= "#{mustdo.id}" %>">
+    <% color = color -= color_change_percent %>
+    <tr style="background-color: rgba(233,87,34,<%= "#{color}" %>)" class="colored-rows" id="todo-<%= "#{mustdo.id}" %>">
       <td><%= mustdo.description %></td>
-      <td><%= mustdo.days_left %></td>
-      <td>
+      <td class="column-center-align" ><%= mustdo.days_left %></td>
+      <td class="column-center-align" >
         <%= form_for mustdo, :remote => true, :method => 'delete' do |f| %>
           <%= f.check_box :complete, :class => 'submittable' %>
         <% end %>
       </td>
     </tr>
   <% end %>
+
 </table>

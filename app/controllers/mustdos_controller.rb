@@ -14,7 +14,7 @@ class MustdosController < ApplicationController
     @mustdo = Mustdo.new(mustdo_params)
     @mustdo.user = current_user
     if @mustdo.save
-      redirect_to mustdos_path, notice: 'Your new Mustdu item was saved'
+      redirect_to mustdos_path
     else
       flash[:error] = @mustdo.errors.full_messages.first
       redirect_to mustdos_path
@@ -32,15 +32,6 @@ class MustdosController < ApplicationController
 
   def destroy
     @mustdo = Mustdo.find(params[:id])
-=begin
-    if @mustdo.destroy
-      flash[:notice] = "Destroyed"
-      redirect_to to mustdos_path
-    else
-      flash[:error] = "Did not work."
-      redirect_to mustdos_path
-    end
-=end
   end
 
   private

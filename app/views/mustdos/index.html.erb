@@ -1,4 +1,4 @@
-<h1 id="your-mustdo-title">That which <%= current_user.name %> MustDU</h1>
+<h1 id="your-mustdo-title">That Which <span id="user-name-in-title"><%= current_user.name %></span> <span id="mustdo-brand-in-title">MustDU</span></h1>
 
 <%= render partial: 'form', locals: { mustdo: @mustdo } %>
 
@@ -15,7 +15,7 @@
   <% color = 1 %>
   <% @mustdos.each do |mustdo|  %>
     <% color = color -= color_change_percent %>
-    <tr style="background-color: rgba(233,87,34,<%= "#{color}" %>)" class="colored-rows" id="todo-<%= "#{mustdo.id}" %>">
+    <tr style="background-color: rgba(231,16,30,<%= "#{color}" %>)" class="colored-rows" id="todo-<%= "#{mustdo.id}" %>">
       <td><%= mustdo.description %></td>
       <td class="column-center-align" ><%= mustdo.days_left %></td>
       <td class="column-center-align" >

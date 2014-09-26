@@ -3,7 +3,7 @@ class MustdosController < ApplicationController
   respond_to :html, :js
 
   def index
-    @mustdos = current_user.mustdos
+    @mustdos = current_user.mustdos.where(complete: false)
     @mustdo = Mustdo.new
   end
 
@@ -32,6 +32,7 @@ class MustdosController < ApplicationController
 
   def destroy
     @mustdo = Mustdo.find(params[:id])
+    @mustdo.update_attributes(complete: true)
   end
 
   private

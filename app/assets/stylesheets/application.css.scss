@@ -30,7 +30,7 @@
 }
 
 #new_mustdo {
-  background: rgb(231, 16, 30);
+  background: black;
   padding: 15px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -38,13 +38,23 @@
 }
 
 #description-label {
-  color: white;
+  color: rgb(76,76,76);
   text-transform: uppercase;
   padding-right: 5px;
 }
 
 #your-mustdo-title {
   text-align: center;
+  color: rgb(51,51,51);
+  font-family: 'Oxygen', sans-serif;
+}
+
+#user-name-in-title {
+  color: rgb(92, 190, 31);
+}
+
+#mustdo-brand-in-title {
+  
 }
 
 .column-center-align {
@@ -52,7 +62,7 @@
 }
 
 .colored-header {
-  background: rgb(229, 54, 26);
+  background: rgb(51,51,51);
   color: white;
 }
 
@@ -61,5 +71,13 @@
 }
 
 #save-description-button {
+  background: rgb(140, 140, 140);
+  border-color: rgb(140, 140, 140);
+  color: white;
+}
 
+#save-description-button:hover {
+  background: rgb(92, 190, 31);
+  border-color: rgb(92, 190, 31);
+  color: white;
 }

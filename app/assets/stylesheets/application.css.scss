@@ -50,7 +50,7 @@
 }
 
 #user-name-in-title {
-  color: rgb(92, 190, 31);
+  color: rgb(233, 87, 34);
 }
 
 #mustdo-brand-in-title {
@@ -80,4 +80,12 @@
   background: rgb(92, 190, 31);
   border-color: rgb(92, 190, 31);
   color: white;
+}
+
+a {
+  color: rgb(233, 87, 34);
+}
+
+a:hover {
+  color: rgba(233, 87, 34, .8);
 }

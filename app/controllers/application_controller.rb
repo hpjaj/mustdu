@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    mustdos_path(current_user)
+    mustdos_path
   end
 
 end

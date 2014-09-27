@@ -50,7 +50,7 @@
 }
 
 #user-name-in-title {
-  color: rgb(233, 87, 34);
+  color: rgb(231, 16, 30);
 }
 
 #mustdo-brand-in-title {
@@ -83,9 +83,22 @@
 }
 
 a {
-  color: rgb(233, 87, 34);
+  color: rgb(231, 16, 30);
 }
 
 a:hover {
-  color: rgba(233, 87, 34, .8);
+  color: rgba(231, 16, 30, .8);
 }
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-top: none;
+}
+
+
+
+
+
+
+
+
+

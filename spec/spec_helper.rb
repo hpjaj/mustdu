@@ -14,6 +14,7 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   
   # rspec-expectations config goes here. You can use an alternate
@@ -42,6 +43,14 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner[:active_record].strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each, js: true) do
+    # For JavaScript tests ensure we're not using transactions as they're
+    # not shared into the phantomjs thread.
+    # http://www.railsonmaui.com/tips/rails/capybara-phantomjs-poltergeist-rspec-rails-tips.html
+    # http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
+    DatabaseCleaner[:active_record].strategy = :truncation
   end
 
   config.before(:each) do

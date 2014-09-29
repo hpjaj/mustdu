@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User marks items completeled' do
+describe 'User marks items completed', :js => true do
     
     before do
       user = create(:user)
@@ -24,19 +24,8 @@ describe 'User marks items completeled' do
     end
 
     it 'Successfully' do
-      expect( page ).to have_content('Complete')
+      expect( page ).to have_content('Meet up with the team')
       check("mustdo[complete]")
-      checkbox = find('#mustdo_complete')
-      expect( checkbox ).to be_checked
-
-      mustdo_element = find(".colored-rows")
-      expect(mustdo_element).to_not be_visible
-      # this one below is a test.  it should not be passing
-      # but it is.  meaning the item is not being deleted
-      expect( page ).to have_content('Meet up with the team') 
-      
-      # i will uncomment this one, below, once above does not work
-      #expect( page ).to_not have_content('Meet up with the team')
-
+      expect( page ).to_not have_content('Meet up with the team')
     end
 end

@@ -45,4 +45,51 @@ RSpec.describe Mustdo, :type => :model do
 
   end
 
+  describe "#days_left" do
+    # ((self.created_at + 7.days - Time.now) / ( 60 * 60 * 24)).round
+
+    after(:each) do
+      travel_back
+    end
+
+    it "is 0 after 1 week" do
+      travel_to Time.now
+      mustdo = create(:mustdo)
+      travel 1.week
+      expect(mustdo.days_left).to eq(0)
+    end
+
+    it "is 7 for the first day" do
+      
+      travel_to Time.now
+      mustdo = create(:mustdo)
+      expect(mustdo.days_left).to eq(7)
+
+      half_day = 12.hours
+      travel (half_day)
+      
+      expect(mustdo.days_left).to eq(7)
+      
+      travel 1.second
+      expect(mustdo.days_left).to eq(6)
+    end
+
+    it "rounds to the nearest half day" do
+      created_at = Time.now
+      travel_to created_at
+      
+      mustdo = create(:mustdo)
+      expect(mustdo.days_left).to eq(7)
+
+      [0, 1, 2, 3, 4, 5, 6].each do |days_passed|
+        travel_to created_at + (days_passed + 0.5).days
+        expected_days_left = 7 - days_passed
+        expect(mustdo.days_left).to eq(expected_days_left)
+        travel 1.second
+        expect(mustdo.days_left).to eq(expected_days_left - 1)
+      end
+
+    end
+  end
+
 end

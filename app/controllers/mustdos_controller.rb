@@ -3,7 +3,7 @@ class MustdosController < ApplicationController
   respond_to :html, :js
 
   def index
-    @mustdos = current_user.mustdos.where(complete: false)
+    @mustdos = current_user.mustdos.incomplete
     @mustdo = Mustdo.new
   end
 

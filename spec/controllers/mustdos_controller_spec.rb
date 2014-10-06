@@ -11,13 +11,18 @@ RSpec.describe MustdosController, :type => :controller do
   end
 
   describe "GET index" do
+
+    before(:all) do
+      # Have a mix of completed and incomplete mustdos
+      completed_mustdo = create(:mustdo, user: @user, complete: true)
+    end
+
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
 
     it "finds incomplete mustdos for user" do
-      completed_mustdo = create(:mustdo, user: @user, complete: true)
       get :index
       expect(assigns(:mustdos)).to eq([@mustdo])
     end

@@ -24,7 +24,8 @@ RSpec.describe MustdosController, :type => :controller do
 
     it "finds incomplete mustdos for user" do
       get :index
-      expect(assigns(:mustdos)).to eq([@mustdo])
+      incomplete_mustdos = [@mustdo]
+      expect(assigns(:mustdos)).to eq(incomplete_mustdos)
     end
 
     it "initializes a new instance for the create mustdo form" do
@@ -35,20 +36,23 @@ RSpec.describe MustdosController, :type => :controller do
 
 
   describe "POST create" do
-    before do
-      Mustdo.should.stub(:valid?).and_return(true)
-      post :create, :mustdo => { :description => "A mustdo description of good length.", :complete => false } 
-    end
+    # before do
+    #   Mustdo.should.stub(:valid?).and_return(true)
+    #   post :create, :mustdo => { :description => "A mustdo description of good length.", :complete => false } 
+    # end
 
-    it "returns http success" do
-      mustdo = 
-      post :create
-      expect(response).to have_http_status(:success)
-    end
+    # it "returns http success" do
+    #   post :create
+    #   expect(response).to have_http_status(:success)
+    # end
 
-    it "assigns @musdo" do
-      post :create
-      expect(assigns(:mustdo)).to be_a_new(Mustdo)
+    #expect(assigns(:mustdo))
+
+    it "shows error when mustdo is invalid" do
+      params = {mustdo: {description: nil}}
+      post :create, params
+      expect(flash[:error]).to eq("Description is too short (minimum is 5 characters)")
+      expect(response).to redirect_to(mustdos_path)
     end
   end
 

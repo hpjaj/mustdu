@@ -18,29 +18,43 @@ RSpec.describe Mustdo, :type => :model do
 
   end
 
-  describe "default scope" do
+  describe "scopes" do
 
-    it "orders by created at ascending (oldest first, newest last)" do
+    describe "default" do
 
-      middle = nil
-      travel -2.days do
-        middle = create(:mustdo)
+      it "orders by created at ascending (oldest first, newest last)" do
+
+        middle = nil
+        travel -2.days do
+          middle = create(:mustdo)
+        end
+
+        oldest = nil
+        travel -3.days do
+          oldest = create(:mustdo)
+        end
+
+        newest = nil
+        travel -1.day do
+          newest = create(:mustdo)
+        end
+
+        mustdos = Mustdo.all
+        expect(mustdos).to eq([oldest, middle, newest])
+        expect(mustdos[0].created_at).to be < mustdos[1].created_at
+        expect(mustdos[1].created_at).to be < mustdos[2].created_at
       end
 
-      oldest = nil
-      travel -3.days do
-        oldest = create(:mustdo)
+    end
+
+    describe "incomplete" do
+
+      it "queries for records where complete is false" do
+        complete_mustdo = create(:mustdo, complete: true)
+        incomplete_mustdo = create(:mustdo, complete: false)
+        expect(Mustdo.incomplete).to eq([incomplete_mustdo])
       end
 
-      newest = nil
-      travel -1.day do
-        newest = create(:mustdo)
-      end
-
-      mustdos = Mustdo.all
-      expect(mustdos).to eq([oldest, middle, newest])
-      expect(mustdos[0].created_at).to be < mustdos[1].created_at
-      expect(mustdos[1].created_at).to be < mustdos[2].created_at
     end
 
   end

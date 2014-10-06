@@ -32,3 +32,18 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+## JavaScript Testing with PhantomJS
+
+PhantomJS is required to run JavaScript-dependent specs. 
+
+### Install PhantomJS on Ubuntu
+
+SSH into your Vagrant Virtual Machine if you're using one, then run the following commands to install [PhantomJS](http://phantomjs.org/):
+
+```
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install nodejs
+npm install -g phantomjs
+```

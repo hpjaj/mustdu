@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Registering' do
   it 'creates a new user account' do
+    
     visit '/'
 
     within '.pull-right' do

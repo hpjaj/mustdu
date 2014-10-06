@@ -40,6 +40,7 @@ group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'shoulda-matchers', require: false
+  gem 'poltergeist'
 end
 
 gem 'devise'

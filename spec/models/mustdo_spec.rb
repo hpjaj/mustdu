@@ -46,8 +46,7 @@ RSpec.describe Mustdo, :type => :model do
   end
 
   describe "#days_left" do
-    # ((self.created_at + 7.days - Time.now) / ( 60 * 60 * 24)).round
-
+    
     after(:each) do
       travel_back
     end
@@ -81,7 +80,7 @@ RSpec.describe Mustdo, :type => :model do
       mustdo = create(:mustdo)
       expect(mustdo.days_left).to eq(7)
 
-      [0, 1, 2, 3, 4, 5, 6].each do |days_passed|
+      (0..6).each do |days_passed|
         travel_to created_at + (days_passed + 0.5).days
         expected_days_left = 7 - days_passed
         expect(mustdo.days_left).to eq(expected_days_left)

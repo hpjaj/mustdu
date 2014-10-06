@@ -6,7 +6,7 @@ RSpec.describe MustdosController, :type => :controller do
 
   before do
     @user = create(:user)
-    @mustdo = create(:mustdo)
+    @mustdo = create(:mustdo, user: @user, complete: false)
     sign_in @user
   end
 
@@ -16,12 +16,13 @@ RSpec.describe MustdosController, :type => :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "finds current_user's mustdos, where complete is false, and assigns the array to @mustdos" do
+    it "finds incomplete mustdos for user" do
+      completed_mustdo = create(:mustdo, user: @user, complete: true)
       get :index
-      expect(Mustdo.find_by_complete(false).description).to eq("This item needs to get done this week")
+      expect(assigns(:mustdos)).to eq([@mustdo])
     end
 
-    it "assigns @musdo" do
+    it "initializes a new instance for the create mustdo form" do
       get :index
       expect(assigns(:mustdo)).to be_a_new(Mustdo)
     end

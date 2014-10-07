@@ -23,11 +23,6 @@ class MustdosController < ApplicationController
     end
   end
 
-  def update
-    @mustdo = Mustdo.find(params[:id])
-    @mustdo.update_attributes(params[:mustdo])
-  end
-
   def destroy
     @mustdo = Mustdo.find(params[:id])
     @mustdo.update_attributes(complete: true)

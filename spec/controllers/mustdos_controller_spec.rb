@@ -60,15 +60,6 @@ RSpec.describe MustdosController, :type => :controller do
     end
   end
 
-
-  describe "GET update" do
-    xit "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-
   describe "GET destroy" do
     xit "returns http success" do
       get :destroy

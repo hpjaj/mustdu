@@ -2,6 +2,8 @@ class MustdosController < ApplicationController
 
   respond_to :html, :js
 
+  before_action :authenticate_user!
+
   def index
     @mustdos = current_user.mustdos.incomplete
     @mustdo = Mustdo.new

@@ -25,7 +25,7 @@ feature "User views mustdos" do
 
   end
 
-  scenario "lists incomplete mustdos only" do
+  scenario "list with incomplete mustdos only" do
 
     user = create(:user)
     

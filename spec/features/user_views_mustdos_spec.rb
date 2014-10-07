@@ -38,6 +38,6 @@ feature "User views mustdos" do
     expect(page).to have_content "Get milk"
     expect(page).not_to have_content "Pay bills"
     expect(page).to have_content "Cancel meeting"
-  end
+  end 
 
 end

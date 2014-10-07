@@ -4,17 +4,20 @@ RSpec.describe MustdosController, :type => :controller do
 
   include Devise::TestHelpers
 
-  before do
-    @user = create(:user)
-    @mustdo = create(:mustdo, user: @user, complete: false)
-    sign_in @user
-  end
-
   describe "GET index" do
 
-    before(:all) do
+    before do
+      @user = create(:user)
       # Have a mix of completed and incomplete mustdos
       completed_mustdo = create(:mustdo, user: @user, complete: true)
+      @mustdo = create(:mustdo, user: @user, complete: false)
+      sign_in @user
+    end
+
+    it "redirects anonymous user to sign in" do
+      sign_out :user
+      get :index
+      expect(response).to redirect_to new_user_session_path
     end
 
     it "returns http success" do
@@ -33,31 +36,44 @@ RSpec.describe MustdosController, :type => :controller do
     end
   end
 
-
   describe "POST create" do
-    before do
-      Mustdo.should.stub(:valid?).and_return(true)
-      post :create, :mustdo => { :description => "A mustdo description of good length.", :complete => false } 
+
+    it "redirects anonymous user to sign in" do
+      post :create
+      expect(response).to redirect_to new_user_session_path
     end
 
-    it "returns http success" do
-      mustdo = 
-      post :create
-      expect(response).to have_http_status(:success)
+    it "redirects to index with error message for invalid params" do
+      user = create(:user)
+      sign_in user
+
+      too_short_description = "xyz!"
+      post :create, mustdo: { description: too_short_description }
+
+      expect(response).to redirect_to mustdos_path
+      expect(flash[:error]).to eq "Description is too short (minimum is 5 characters)"
+      expect(Mustdo.count).to eq(0)
     end
 
-    it "assigns @musdo" do
-      post :create
-      expect(assigns(:mustdo)).to be_a_new(Mustdo)
+    it "creates mustdo and redirects to index" do
+      user = create(:user)
+      sign_in user
+
+      post :create, mustdo: { description: "Drink coffee" }
+
+      expect(response).to redirect_to mustdos_path
+      expect(user.mustdos.first.description).to eq("Drink coffee")
     end
+
+
   end
 
 
-  describe "GET destroy" do
-    xit "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET destroy" do
+  #   xit "returns http success" do
+  #     get :destroy
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 
 end

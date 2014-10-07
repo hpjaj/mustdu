@@ -23,10 +23,6 @@ class MustdosController < ApplicationController
     end
   end
 
-  def show
-    @mustdo = Mustdo.find params[:id]
-  end
-
   def update
     @mustdo = Mustdo.find(params[:id])
     @mustdo.update_attributes(params[:mustdo])

@@ -1,4 +1,4 @@
-<%= form_for Mustdo.new do |f| %>
+<%= form_for mustdo do |f| %>
   <%= f.label :Create_A_MustDU, id: "description-label" %>
   <%= f.text_field :description, placeholder: 'Enter a description', id: "enter-description-form-field", class: 'form-control' %>
   <%= f.button 'Save', class: 'btn btn-success', id: 'save-description-button' %>

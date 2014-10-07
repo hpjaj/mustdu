@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  resources :mustdos, only: [:new, :create, :show, :index, :destroy]
+  resources :mustdos, only: [:new, :create, :index, :destroy]
   
   get 'welcome/index'
 

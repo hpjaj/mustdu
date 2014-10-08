@@ -21,14 +21,8 @@ class MustdosController < ApplicationController
   end
 
   def destroy
-    @mustdo = Mustdo.find(params[:id])
+    @mustdo = current_user.mustdos.find(params[:id])
     @mustdo.update_attributes(complete: true)
-  end
-
-  private
-
-  def mustdo_params
-    params.require(:mustdo).permit(:description, :complete)
   end
 
 end

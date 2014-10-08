@@ -9,9 +9,6 @@ class MustdosController < ApplicationController
     @mustdo = Mustdo.new
   end
 
-  def new
-  end
-
   def create
     mustdo = current_user.mustdos.build(params.require(:mustdo).permit(:description))
     if !mustdo.save

@@ -11,7 +11,9 @@
     
 
   </tr>
-  <% if @mustdos.length > 0 %>
+  <% if @mustdos.empty? %>
+    <tr><td colspan="3">You've got no mustdos, why not create one?</td></tr>
+  <% else %>
     <% color_change_percent = ( 100 / @mustdos.length ) / 100.000 %>
     <% color = 1 + color_change_percent %>
     <% @mustdos.each do |mustdo|  %>
